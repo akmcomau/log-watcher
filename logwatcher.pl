@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 
-package AKM::Logwatcher;
+package AKM::LogWatcher;
 
 use Modern::Perl;
 use Moose;
@@ -425,18 +425,19 @@ sub extract_date {
 
 sub test_rule {
 	my ($self, $rule, $message) = @_;
+	my $status = 1;
 
-	if (defined($rule->{'rule'}) && $message =~ qr/$rule->{'rule'}/) {
-		return 1;
+	if (defined($rule->{'rule'}) && $message !~ qr/$rule->{'rule'}/) {
+		$status = 0;
 	}
-	elsif (defined($rule->{'not_rule'}) && $message !~ qr/$rule->{'not_rule'}/) {
-		return 1;
+	if (defined($rule->{'not_rule'}) && $message =~ qr/$rule->{'not_rule'}/) {
+		$status = 0;
 	}
-	elsif (defined($rule->{'not_rule_nocase'}) && $message !~ qr/$rule->{'not_rule_nocase'}/i) {
-		return 1;
+	if (defined($rule->{'not_rule_nocase'}) && $message =~ qr/$rule->{'not_rule_nocase'}/i) {
+		$status = 0;
 	}
 
-	return 0;
+	return $status;
 }
 
 sub test_rules {
@@ -810,7 +811,7 @@ $options{'sort_lines'}       = $sort_lines         if defined $sort_lines;
 $options{'sort_lines_once'}  = $sort_lines_once    if defined $sort_lines_once;
 
 # init the daemon
-my $daemon = AKM::Logwatcher->new_with_options(
+my $daemon = AKM::LogWatcher->new_with_options(
 	'progname'             => 'LogWatcher',
 	'dont_close_all_files' => 1,
 	%options
