@@ -1,0 +1,114 @@
+---
+iptables_chain: 'Firewall-1-Banned'
+log_file: /var/log/logwatcher.log
+whitelist_ips:
+  - 127.0.0.1
+log_files:
+  - globname: /var/log/messages
+    date_rule: '^($M +$d $h:$i:$s)'
+    rules:
+      - type: tail|ban
+        colour: bold-red
+        name: purftpd - failed login
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ pure\-ftpd: \(\?@([\d.]+)\) \[WARNING\] (Authentication failed for user \[.*?\])'
+        format: ip_message
+        threshold: 5
+        ban_time: 21600
+
+      - type: tail
+        colour: yellow
+        name: pureftp - User logged in
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ pure-ftpd: \([^)]+\) \[INFO\] [^ ]+ is now logged in'
+
+      - type: tail
+        colour: red
+        name: iptables - Dropped packet
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ kernel: \[[\d.]+\] IN=eth0 OUT='
+
+  - globname: /var/log/syslog
+    date_rule: '^($M +$d $h:$i:$s)'
+    rules:
+      - type: tail
+        colour: red
+        name: qmail - Email to non-existant user
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ qmail: [\d.]+ delivery \d+: failure:'
+
+      - type: tail
+        colour: bold-red
+        name: qmail - qmail-send cannot start already running
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ qmail: [\d.]+ alert: cannot start: qmail-send is already running'
+
+      - type: tail
+        colour: green
+        name: qmail - mail sent local
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ qmail: [\d.]+ starting delivery \d+: msg \d+ to'
+
+      - type: tail
+        colour: green
+        name: qmail - mail sent remote
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ qmail: [\d.]+ delivery \d+: success:'
+
+      - type: tail
+        colour: green
+        name: qmail - mail start
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ qmail: [\d.]+ info msg \d+:'
+
+  - globname: /var/log/dovecot
+    date_rule: '^($M +$d $h:$i:$s)'
+    rules:
+      - type: tail|ban
+        colour: red
+        name: dovecot: Login Failed
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} pop3-login: Info: Login failed: (.*): rip=([\d.]+)'
+        format: message_ip
+        threshold: 50
+        ban_time: 86400
+
+      - type: tail
+        colour: bold-red
+        name: dovecot - Fatal Error
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} dovecot: Fatal:'
+
+      - type: tail
+        colour: yellow
+        name: dovecot: Successful Login
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} auth\([^)]+\): Info: client out: OK'
+
+  - globname: /var/log/auth.log
+    date_rule: '^($M +$d $h:$i:$s)'
+    rules:
+      - type: tail|ban
+        colour: bold-red
+        name: auth - failed ssh invalid user
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ sshd\[\d+\]: (Failed (?:password|none) for invalid user \w+) from ([\d.]+) port \d+ ssh2'
+        format: message_ip
+        threshold: 6
+        ban_time: 86400
+
+      - type: tail|ban
+        colour: bold-red
+        name: auth - failed ssh auth
+        rule: '^\w{3} +\d+ \d{2}:\d{2}:\d{2} \w+ sshd\[\d+\]: (Failed (?:password|none) for \w+) from ([\d.]+) port \d+ ssh2'
+        format: message_ip
+        threshold: 6
+        ban_time: 86400
+
+      - type: tail
+        colour: yellow
+        name: PAM session opened
+        rule: pam_unix\((sshd|su|webmin):session\): session opened for user
+
+  - globname: /home/*/logs/*-access_log
+    date_rule: '^[\d.]+ - (?:[a-z]+|-) \[($d/$M/$Y:$h:$i:$s [+-]\d+)\]'
+    rules:
+      - type: tail|ban
+        colour: bold-red
+        name: Apache - '=../../..' in the GET params
+        rule: '^([\d.]+) - ([a-z]+|-) \[\d+/[A-Za-z]+/\d+:\d+:\d+:\d+ [+-]\d+\] ("GET .*\.\./\.\./\.\..*? HTTP/\d.\d" \d+ \d+)'
+        format: ip_message
+        threshold: 1
+        ban_time: 86400
+
+      - type: tail
+        name: Apache - tail page access
+        not_rule_nocase: '^([\d.]+) - ([a-z]+|-) \[\d+/[A-Za-z]+/\d+:\d+:\d+:\d+ [+-]\d+\] "GET .*(\.css|\.gif|\.jpg|\.jpeg|\.js|\.png|\.ico|\.swf|\.wmz|\.woff|\.svg)'

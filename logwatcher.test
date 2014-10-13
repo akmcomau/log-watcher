@@ -1,0 +1,77 @@
+
+# PureFTPd
+Nov  4 08:03:54 walter pure-ftpd: (?@10.10.10.10) [INFO] person is now logged in
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+
+# Dropped network packet
+Nov  4 06:28:05 walter kernel: [9289036.362964] IN=eth0 OUT= MAC=d4:ae:52:97:78:fb:00:d0:04:64:08:0a:08:00 SRC=10.10.10.10 DST=127.0.0.1 LEN=48 TOS=0x00 PREC=0x00 TTL=112 ID=35605 DF PROTO=TCP SPT=2522 DPT=445 WINDOW=65535 RES=0x00 SYN URGP=0
+
+# PureFTPd
+Nov  4 08:03:54 walter pure-ftpd: (?@10.10.10.10) [INFO] person is now logged in
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+Oct 23 19:49:08 walter pure-ftpd: (?@10.10.10.10) [WARNING] Authentication failed for user [person]
+
+# Qmail
+Nov 11 08:51:52 walter qmail: 1352587912.903034 alert: cannot start: qmail-send is already running
+Nov 11 09:02:37 walter qmail: 1352588557.326888 delivery 3: failure: Sorry,_no_mailbox_here_by_that_name._(#5.1.1)/
+
+# Dovecot
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 11 13:21:09 pop3-login: Info: Login failed: Plaintext authentication disabled: rip=10.10.10.10, lip=127.0.0.1
+Nov 10 22:48:55 dovecot: Fatal: Time just moved backwards by 1209 seconds. This might cause a lot of problems, so I'll just kill myself now. http://wiki.dovecot.org/TimeMovedBackwards
+Jul 22 11:08:16 auth(default): Info: client out: OK     1       user=person@akm.com.au
+
+# SSH
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 10 23:02:11 walter sshd[16617]: Failed none for invalid user john from 10.10.10.10 port 47423 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:23 walter sshd[9602]: Failed password for person from 10.10.10.10 port 35201 ssh
+Nov 12 13:03:26 walter sshd[9615]: pam_unix(sshd:session): session opened for user john by (uid=0)
+Nov 11 08:50:34 walter su[2593]: pam_unix(su:session): session opened for user root by john(uid=0)
+Nov 11 08:51:27 walter perl[2642]: pam_unix(webmin:session): session opened for user root by (uid=0)
+
+# Apache
+10.10.10.10 - - [12/Nov/2012:11:21:50 +1000] "GET /?-d%20allow_url_include%3DOn+-d%20auto_prepend_file%3D../../../../../../../../../../../../etc/passwd%00%20-n/?-d%20allow_url_include%3DOn+-d%20auto_prepend_file%3D../../../../../../../../../../../../etc/passwd%00%20-n HTTP/1.1" 200 4622
+10.10.10.10 - - [10/Nov/2012:17:28:19 +1000] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 302 518
+
+# Apache tail
+10.10.10.10 - - [11/Nov/2012:06:36:52 +1000] "GET /index.js HTTP/1.1" 200 3593
+10.10.10.10 - - [11/Nov/2012:06:36:52 +1000] "GET /index.css HTTP/1.1" 200 3593
+10.10.10.10 - - [11/Nov/2012:06:36:53 +1000] "GET /img/price.jpg HTTP/1.1" 200 9092
+10.10.10.10 - - [11/Nov/2012:06:36:53 +1000] "GET /img/price.JPG HTTP/1.1" 200 9092
+10.10.10.10 - - [11/Nov/2012:06:36:53 +1000] "GET /img/price.jpeg HTTP/1.1" 200 9092
+10.10.10.10 - - [11/Nov/2012:06:36:53 +1000] "GET /img/price.png HTTP/1.1" 200 9092
+10.10.10.10 - - [11/Nov/2012:06:36:53 +1000] "GET /a_page.html HTTP/1.1" 200 9092
